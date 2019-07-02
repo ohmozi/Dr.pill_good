@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+  <style>
+    table{
+      width:100%;
+      border: none;
+      border-collapse: collapse;
+    }
+    th,td{
+      border-bottom:1px solid #444444;
+      padding : 10px;
+    }
+    .jb-x-small{font-size:x-small;}
+    .jb-small{font-size:small;}
+    .jb-medium{font-size:medium;}
+    .jb-large{font-size:large;}
+    </style>
+</head>
+  <body>
+    <div class="body-header" >
+       검색결과
+    </div>
+    <div class="blank">
+    </div>
+    <div class="container" style="margin-top:20px;">
+      <table>
+        <tbody>
+    	  {% if data|length==0: %}
+    	  	<h2> 검색결과가 없습니다 </h2>
+    	  {% else: %}
+              {% for datas in data: %}
+
+        	    <tr>
+                <td><img src="{{ datas[9] }}" alt="약사진" width="200" height="150"/></td>
+            		<td>
+            			<p class="jb-x-small">{{ datas[2] }}</P>
+            			<p class="jb-medium">{{ datas[1] }}</p>
+            			<p class="jb-small">{{ datas[8] }}</p>
+            		</td>
+        	    </tr>
+
+              {% endfor %}
+	        {% endif %}
+        </tbody>
+    </table>
+  </body>
+</html>
